@@ -1,7 +1,7 @@
 # HWID-shifter
 
 A HWID spoofer for Windows.
-Tested on x64 Windows 10 1507. 
+Tested on x64 Windows 10 20H2. 
 
 - The driver handles disk, volume, NIC (+ ARP), SMBIOS, boot, and GPU identifiers.
 - The usermode program handles registry keys and common tracking files.
