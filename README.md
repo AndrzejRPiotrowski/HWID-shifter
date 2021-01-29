@@ -5,6 +5,7 @@ Tested on x64 Windows 10 20H2.
 
 ## Motivation 
 The initial motivation is bypassing HWID detection methods used by intrusive software like anti-cheats, etc. or licensing restrictions implemented in software.
+
 ![HWID-shifter](https://i.imgur.com/4inTeXm.png)
 
 ## Usage  Ideas
