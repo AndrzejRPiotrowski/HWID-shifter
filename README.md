@@ -7,7 +7,12 @@ The initial motivation is bypassing HWID detection methods used by intrusive sof
 
 ![HWID-shifter](https://i.imgur.com/4inTeXm.png)
 
-## Usage  Ideas
+## How To Run
+1 Open the ```Release```
+2 Run the ```Run_Me.bat``` as administrator
+3 Let the program do the rest
+
+## Usage Ideas
  Fakes the serial number for HDDs/disk drives
 - It's tricky but can be used on EAC or BattlEye
 - Protect Hardware Identifications
