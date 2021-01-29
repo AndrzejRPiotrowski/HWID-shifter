@@ -16,5 +16,8 @@ The initial motivation is bypassing HWID detection methods used by intrusive sof
 - It also changes the registry entries to the faked serial via an internal kernel function
 
 
+
+![HWID-shifter](https://i.imgur.com/4inTeXm.png)
+
 ## Note
 - Its for educational purposes only and I'm not responsible for your usage.
