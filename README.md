@@ -3,7 +3,7 @@
 Spoofing the Windows 10 HDD/diskdrive serialnumber from kernel
 Tested on x64 Windows 10 20H2.
 
-##Motivation 
+## Motivation 
 The initial motivation is bypassing HWID detection methods used by intrusive software like anti-cheats, etc. or licensing restrictions implemented in software.
 
 ## Usage  Ideas
