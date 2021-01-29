@@ -1,5 +1,4 @@
 # HWID-shifter
-
 Spoofing the Windows 10 HDD/diskdrive serialnumber from kernel
 Tested on x64 Windows 10 20H2.
 
