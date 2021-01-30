@@ -1,5 +1,5 @@
 @echo off
-
+color 1E
 :: BatchGotAdmin
 :-------------------------------------
 REM  --> Check for permissions
@@ -33,40 +33,73 @@ setlocal
 call :colorEZ
 cls
 
-echo %ESC%[107m%ESC%[91mDiscord: DrunkLeen#8784 %ESC%[0m
-echo %ESC%[92m------------------------
-echo %ESC%[92m***** HWID Spoofer ***** 
-echo %ESC%[92m------------------------ %ESC%[0m
+echo %ESC%[44m%ESC%[107m%ESC%[91mDiscord: DrunkLeen#8784
+echo %ESC%[44m%ESC%[92m------------------------
+echo %ESC%[44m%ESC%[92m***** HWID Spoofer ***** 
+echo %ESC%[44m%ESC%[92m------------------------ %ESC%[97m%ESC%[44m 
 wmic diskdrive get serialnumber
 wmic memorychip get serialnumber
 wmic baseboard get serialnumber
-
-echo %ESC%[93mDo you want to spoof it? %ESC%[0m
-
+echo %ESC%[93m
 
 :UseChoice
-%SystemRoot%\System32\choice.exe /C YN /N /M "Are you sure [Y/N]?"
+%SystemRoot%\System32\choice.exe /C YN /N /M "Do you want to spoof it? [Y/N]?"
 if not errorlevel 1 goto UseChoice
 if errorlevel 2 goto :EOF
 
 
-
 %CurrentDir%mapper.exe spoofer.sys
 %CurrentDir%mapper.exe spoofer.sys
 
-echo .
-echo %ESC%[92mHDD serial has been successfully changed. %ESC%[0m
-echo %ESC%[96mNew Serial Numbers: %ESC%[0m
+
+
+
+
+
+    setlocal enableextensions enabledelayedexpansion
+
+    Rem Get a carriage return character
+    set "CR=" & for /f %%a in ('copy /Z "%~f0" nul') do if not defined CR set "CR=%%a"
+    rem The progress bar
+    set "fill=[##############################]"
+	
+
+    
+    echo( %ESC%[91mcomputers were created to give humans time to think while waiting ....
+
+    rem For each character in the fill
+    for /l %%a in (1 1 31) do (
+        rem Calculate the right part of the bar
+        set "spaces=!fill:~%%a!"
+
+        rem Output the left and right parts of the bar and carriage return
+        <nul set/p ".= Loading The Magic !fill:~0,%%a!!spaces:#= !!CR!"
+
+        rem Pause for a second
+        ping -n 1 "" > nul
+    )
+    echo(
+    echo(
+    echo(
+    echo(
+
+
+
+
+
+
+
+echo %ESC%[92m..............................
+echo %ESC%[92mHDD serial has been successfully changed.
+echo %ESC%[96mNew Serial Numbers:
+echo %ESC%[96m..............................%ESC%[97m
 wmic diskdrive get serialnumber
 wmic memorychip get serialnumber
 wmic baseboard get serialnumbers
-echo .
-
-echo %ESC%[93mDo you want to clear tracks? %ESC%[0m
 
 
 :UseChoice
-%SystemRoot%\System32\choice.exe /C YN /N /M "Are you sure [Y/N]?"
+%SystemRoot%\System32\choice.exe /C YN /N /M "Do you want to clear tracks[Y/N]?"
 if not errorlevel 1 goto UseChoice
 if errorlevel 2 goto :EOF
 
