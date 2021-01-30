@@ -5,7 +5,10 @@ Tested on x64 Windows 10 20H2.
 ## Motivation 
 The initial motivation is bypassing HWID detection methods used by intrusive software like anti-cheats, etc. or licensing restrictions implemented in software.
 
-![HWID-shifter](https://i.imgur.com/4inTeXm.png)
+![HWID-shifter](https://i.imgur.com/7BDzLVm.png)
+![HWID-shifter](https://i.imgur.com/x5OuS6g.png)
+![HWID-shifter](https://i.imgur.com/fDd9Kjt.png)
+![HWID-shifter](https://i.imgur.com/MHSgIfZ.png)
 
 ## How To Run
 1 Open the ```Release```
