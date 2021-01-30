@@ -69,9 +69,12 @@ cls
 echo %ESC%[44m%ESC%[92m------------------------
 echo %ESC%[44m%ESC%[92m--- Spoof HDD Serial --- 
 echo %ESC%[44m%ESC%[92m------------------------
-echo( %ESC%[97m%ESC%[44m 
+echo(
+echo(%ESC%[97m%ESC%[93mDisk Drive:%ESC%[97m 
 wmic diskdrive get serialnumber
+echo(%ESC%[97m%ESC%[93mMemory Chip:%ESC%[97m 
 wmic memorychip get serialnumber
+echo(%ESC%[97m%ESC%[93mBase Board:%ESC%[97m 
 wmic baseboard get serialnumber
 echo %ESC%[93m
 
@@ -131,10 +134,15 @@ echo %ESC%[92mHDD serial has been successfully changed.
 echo %ESC%[96mNew Serial Numbers:
 echo %ESC%[96m-----------------------------------------%ESC%[97m
     echo(
-wmic diskdrive get serialnumber
-wmic memorychip get serialnumber
-wmic baseboard get serialnumbers
 
+echo(%ESC%[97m%ESC%[93mDisk Drive:%ESC%[97m 
+wmic diskdrive get serialnumber
+echo(%ESC%[97m%ESC%[93mMemory Chip:%ESC%[97m 
+wmic memorychip get serialnumber
+echo(%ESC%[97m%ESC%[93mBase Board:%ESC%[97m 
+wmic baseboard get serialnumber
+
+echo %ESC%[91m
 
 pause
 cls
@@ -148,10 +156,15 @@ cls
 echo %ESC%[44m%ESC%[92m------------------------
 echo %ESC%[44m%ESC%[92m---- Check Serials ---- 
 echo %ESC%[44m%ESC%[92m------------------------
-echo( %ESC%[97m%ESC%[44m 
+echo(
+echo(%ESC%[97m%ESC%[93mDisk Drive:%ESC%[97m 
 wmic diskdrive get serialnumber
+echo(%ESC%[97m%ESC%[93mMemory Chip:%ESC%[97m 
 wmic memorychip get serialnumber
+echo(%ESC%[97m%ESC%[93mBase Board:%ESC%[97m 
 wmic baseboard get serialnumber
+
+
 echo %ESC%[91m
 
 pause
