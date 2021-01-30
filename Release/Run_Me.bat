@@ -27,16 +27,49 @@ if '%errorlevel%' NEQ '0' (
 
 
 
-@echo off
+title HWID-Shifter by DrunkLeen#8784
+Set mycmdWidth=75
+Set mycmdHeight=40
+
 
 setlocal
 call :colorEZ
 cls
 
-echo %ESC%[44m%ESC%[107m%ESC%[91mDiscord: DrunkLeen#8784
+SETLOCAL ENABLEEXTENSIONS
+SETLOCAL ENABLEDELAYEDEXPANSION
+
+:menuLOOP
+
+color 1E
+cls
+
+echo  %ESC%[44m%ESC%[107m%ESC%[91mDiscord: DrunkLeen#8784
 echo %ESC%[44m%ESC%[92m------------------------
 echo %ESC%[44m%ESC%[92m***** HWID Spoofer ***** 
 echo %ESC%[44m%ESC%[92m------------------------ %ESC%[97m%ESC%[44m 
+echo.
+for /f "tokens=1,2,* delims=_ " %%A in ('"findstr /b /c:":menu_" "%~f0""') do echo.  %%B  %%C
+set choice=
+echo.&set /p choice= Please select your choice:  ||GOTO:EOF
+echo.&call:menu_%choice%
+
+GOTO:menuLOOP
+
+::-----------------------------------------------------------
+:: menu functions follow below here
+::-----------------------------------------------------------
+
+:menu_1   Spoof HDD Serial
+
+Set mycmdWidth=37
+Set mycmdHeight=31
+
+cls
+echo %ESC%[44m%ESC%[92m------------------------
+echo %ESC%[44m%ESC%[92m--- Spoof HDD Serial --- 
+echo %ESC%[44m%ESC%[92m------------------------
+echo( %ESC%[97m%ESC%[44m 
 wmic diskdrive get serialnumber
 wmic memorychip get serialnumber
 wmic baseboard get serialnumber
@@ -47,14 +80,14 @@ echo %ESC%[93m
 if not errorlevel 1 goto UseChoice
 if errorlevel 2 goto :EOF
 
-
 %CurrentDir%mapper.exe spoofer.sys
 %CurrentDir%mapper.exe spoofer.sys
 
+Set mycmdWidth=75
+Set mycmdHeight=40
 
-
-
-
+color F0
+cls
 
     setlocal enableextensions enabledelayedexpansion
 
@@ -64,11 +97,16 @@ if errorlevel 2 goto :EOF
     set "fill=[##############################]"
 	
 
-    
-    echo( %ESC%[91mcomputers were created to give humans time to think while waiting ....
+    echo(
+    echo(
+    echo(
+    echo(
+    echo(%ESC%[91mComputers were created to give humans time to think while waiting ....
 
+    echo(
+    echo(
     rem For each character in the fill
-    for /l %%a in (1 1 31) do (
+    for /l %%a in (2 1 31) do (
         rem Calculate the right part of the bar
         set "spaces=!fill:~%%a!"
 
@@ -76,33 +114,62 @@ if errorlevel 2 goto :EOF
         <nul set/p ".= Loading The Magic !fill:~0,%%a!!spaces:#= !!CR!"
 
         rem Pause for a second
-        ping -n 1 "" > nul
+        ping -n 2 "" > nul
     )
     echo(
+	cls
+	
+	
+Set mycmdWidth=37
+Set mycmdHeight=31
+
+	color 1E
     echo(
     echo(
-    echo(
-
-
-
-
-
-
-
-echo %ESC%[92m..............................
+echo %ESC%[92m-----------------------------------------
 echo %ESC%[92mHDD serial has been successfully changed.
 echo %ESC%[96mNew Serial Numbers:
-echo %ESC%[96m..............................%ESC%[97m
+echo %ESC%[96m-----------------------------------------%ESC%[97m
+    echo(
 wmic diskdrive get serialnumber
 wmic memorychip get serialnumber
 wmic baseboard get serialnumbers
 
 
-:UseChoice
-%SystemRoot%\System32\choice.exe /C YN /N /M "Do you want to clear tracks[Y/N]?"
-if not errorlevel 1 goto UseChoice
-if errorlevel 2 goto :EOF
+pause
+cls
+GOTO:EOF
 
+:menu_2   Check Serials
+
+
+
+cls
+echo %ESC%[44m%ESC%[92m------------------------
+echo %ESC%[44m%ESC%[92m---- Check Serials ---- 
+echo %ESC%[44m%ESC%[92m------------------------
+echo( %ESC%[97m%ESC%[44m 
+wmic diskdrive get serialnumber
+wmic memorychip get serialnumber
+wmic baseboard get serialnumber
+echo %ESC%[91m
+
+pause
+cls
+GOTO:menuLOOP
+
+:menu_3  Clean Traces
+
+
+cls
+
+cls
+echo %ESC%[44m%ESC%[92m------------------------
+echo %ESC%[44m%ESC%[92m----- Clean Traces ----- 
+echo %ESC%[44m%ESC%[92m------------------------
+echo( %ESC%[97m%ESC%[44m 
+
+pause
 
 taskkill /f /im epicgameslauncher.exe
 taskkill /f /im FortniteClient-Win64-Shipping_EAC.exe
@@ -113,37 +180,37 @@ taskkill /f /im EpicGamesLauncher.exe
 taskkill /f /im FortniteClient-Win64-Shipping.exe
 taskkill /f /im EpicGamesLauncher.exe
 
-del "C:\Windows\TEMP\206F3FDC-B1A8-4FD6-BDB8-6CFE76122873", /f
-del "C:\ProgramData\Microsoft\Windows\WER\Temp\WER95DF.tmp.mdmp", /f
-del "C:\Windows.old\Users\All Users\Microsoft\Windows\WER\Temp\WER95DF.tmp.mdmp", /f
-del "C:\Users\All Users\Microsoft\Windows\WER\Temp\WER95DF.tmp.mdmp", /f
-del "C:\Windows\CbsTemp\30780525_1668355464", /f 
-del "C:\Windows\TEMP\6E04EF32-0387-48B1-B812-AC2BBA90A8D0", /f 
-del "C:\Users\%username%\AppData\Local\EpicGamesLauncher\Saved\webcache\Cookies", /f 
-del "C:\Users\%username%\AppData\Local\NVIDIA Corporation\GfeSDK\FORTNI~1.LOG", /f 
-del "C:\Program Files\Epic Games\Fortnite\FortniteGame\PersistentDownloadDir\CMS\Files\9A71EB4A90946A4A0DCD9B7D82F48C55B49D0880\siphon-1024x512-4cc0ff3407053325e353c4aea55fb30316e6ecf6.jpg", /f 
-del "C:\Program Files\Epic Games\Fortnite\FortniteGame\PersistentDownloadDir\CMS\Files\9A71EB4A90946A4A0DCD9B7D82F48C55B49D0880\Fortnite%2Ffortnite-game%2Ftournaments%2F11BR_Arena_ModeTiles_Squad_ModeTile-1024x512-c543a187ce733be5ee9f6d17bfb74fb1f2e15f4a.jpg", /f 
-del "C:\Program Files\Epic Games\Fortnite\FortniteGame\PersistentDownloadDir\CMS\Files\9A71EB4A90946A4A0DCD9B7D82F48C55B49D0880\Fortnite%2Ffortnite-game%2Ftournaments%2F11BR_Arena_ModeTiles_Solo_ModeTile-1024x512-6cee09d7bcf82ce3f32ca7c77ca04948121ce617.jpg", /f 
-del "C:\Users\%username%\AppData\Local\Microsoft\Windows\WebCache\V0100024.log", /f 
-del "C:\Users\All Users\Microsoft\Windows\WER\Temp\WER5CC2.tmp.xml", /f 
-del "C:\Windows.old\Users\All Users\Microsoft\Windows\WER\Temp\WER6D21.tmp.WERInternalMetadata.xml", /f 
-del "C:\Users\%username%\AppData\Local\Temp\ecache.bin", /f 
-del "C:\Users\%username%\AppData\Local\CrashDumps\BACKGR~2.DMP", /f 
-del "C:\Windows\prefetch\ATTRIB.EXE-58A07CAF.pf", /f 
-del "C:\Windows\prefetch\AgRobust.db", /f 
-del "C:\Users\%username%\AppData\Local\Microsoft\Feeds Cache", /f 
-del "C:\Windows\prefetch\CEPHTMLENGINE.EXE-E15640BA.pf", /f 
-del "C:\Windows\prefetch\CMD.EXE-0BD30981.pf", /f 
-del "C:\Windows\prefetch\CLIPUP.EXE-4C5C7B66.pf", /f 
-del "C:\Windows\prefetch\D3D9TEST.EXE-1B86F3FC.pf", /f 
-del "C:\Windows\prefetch\DISCORD.EXE-6BEBC47C.pf", /f 
-del "C:\Windows\prefetch\EPICGAMESLAUNCHER.EXE-FAB85FF0.pf", /f 
-del "C:\Windows\prefetch\EPICGAMESLAUNCHER.EXE-018FC121.pf", /f 
-del "C:\Windows\prefetch\GET-GRAPHICS-OFFSETS64.EXE-2BCB2EA4.pf", /f 
-del "C:\Windows\prefetch\GET-GRAPHICS-OFFSETS32.EXE-D4C865E3.pf", /f 
-del "C:\Windows\prefetch\OBS64.EXE-2B6570C7.pf", /f 
-del "C:\Windows\prefetch\OBS-FFMPEG-MUX.EXE-1C01271A.pf", /f 
-del "C:\Windows\prefetch\OBS-FFMPEG-MUX.EXE-1C01271A.pf", /f 
+del "C:\Windows\TEMP\206F3FDC-B1A8-4FD6-BDB8-6CFE76122873",
+del "C:\ProgramData\Microsoft\Windows\WER\Temp\WER95DF.tmp.mdmp",
+del "C:\Windows.old\Users\All Users\Microsoft\Windows\WER\Temp\WER95DF.tmp.mdmp",
+del "C:\Users\All Users\Microsoft\Windows\WER\Temp\WER95DF.tmp.mdmp",
+del "C:\Windows\CbsTemp\30780525_1668355464",
+del "C:\Windows\TEMP\6E04EF32-0387-48B1-B812-AC2BBA90A8D0",
+del "C:\Users\%username%\AppData\Local\EpicGamesLauncher\Saved\webcache\Cookies",
+del "C:\Users\%username%\AppData\Local\NVIDIA Corporation\GfeSDK\FORTNI~1.LOG",
+del "C:\Program Files\Epic Games\Fortnite\FortniteGame\PersistentDownloadDir\CMS\Files\9A71EB4A90946A4A0DCD9B7D82F48C55B49D0880\siphon-1024x512-4cc0ff3407053325e353c4aea55fb30316e6ecf6.jpg",
+del "C:\Program Files\Epic Games\Fortnite\FortniteGame\PersistentDownloadDir\CMS\Files\9A71EB4A90946A4A0DCD9B7D82F48C55B49D0880\Fortnite%2Ffortnite-game%2Ftournaments%2F11BR_Arena_ModeTiles_Squad_ModeTile-1024x512-c543a187ce733be5ee9f6d17bfb74fb1f2e15f4a.jpg",
+del "C:\Program Files\Epic Games\Fortnite\FortniteGame\PersistentDownloadDir\CMS\Files\9A71EB4A90946A4A0DCD9B7D82F48C55B49D0880\Fortnite%2Ffortnite-game%2Ftournaments%2F11BR_Arena_ModeTiles_Solo_ModeTile-1024x512-6cee09d7bcf82ce3f32ca7c77ca04948121ce617.jpg",
+del "C:\Users\%username%\AppData\Local\Microsoft\Windows\WebCache\V0100024.log",
+del "C:\Users\All Users\Microsoft\Windows\WER\Temp\WER5CC2.tmp.xml",
+del "C:\Windows.old\Users\All Users\Microsoft\Windows\WER\Temp\WER6D21.tmp.WERInternalMetadata.xml",
+del "C:\Users\%username%\AppData\Local\Temp\ecache.bin",
+del "C:\Users\%username%\AppData\Local\CrashDumps\BACKGR~2.DMP",
+del "C:\Windows\prefetch\ATTRIB.EXE-58A07CAF.pf",
+del "C:\Windows\prefetch\AgRobust.db",
+del "C:\Users\%username%\AppData\Local\Microsoft\Feeds Cache",
+del "C:\Windows\prefetch\CEPHTMLENGINE.EXE-E15640BA.pf",
+del "C:\Windows\prefetch\CMD.EXE-0BD30981.pf",
+del "C:\Windows\prefetch\CLIPUP.EXE-4C5C7B66.pf",
+del "C:\Windows\prefetch\D3D9TEST.EXE-1B86F3FC.pf",
+del "C:\Windows\prefetch\DISCORD.EXE-6BEBC47C.pf",
+del "C:\Windows\prefetch\EPICGAMESLAUNCHER.EXE-FAB85FF0.pf",
+del "C:\Windows\prefetch\EPICGAMESLAUNCHER.EXE-018FC121.pf",
+del "C:\Windows\prefetch\GET-GRAPHICS-OFFSETS64.EXE-2BCB2EA4.pf",
+del "C:\Windows\prefetch\GET-GRAPHICS-OFFSETS32.EXE-D4C865E3.pf",
+del "C:\Windows\prefetch\OBS64.EXE-2B6570C7.pf",
+del "C:\Windows\prefetch\OBS-FFMPEG-MUX.EXE-1C01271A.pf",
+del "C:\Windows\prefetch\OBS-FFMPEG-MUX.EXE-1C01271A.pf",
 cd C:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\
 cd D:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\
 cd E:\Program Files\Epic Games\Fortnite\FortniteGame\Binaries\Win64\
@@ -573,6 +640,8 @@ REG ADD HKLM\HARDWARE\DESCRIPTION\System\BIOS /v SystemProductName /t REG_SZ /d 
 REG ADD HKLM\HARDWARE\DESCRIPTION\System\BIOS /v SystemSKU /t REG_SZ /d opensource-%random% /f
 REG ADD HKLM\HARDWARE\DESCRIPTION\System\BIOS /v SystemVersion /t REG_SZ /d opensource-%random% /f
 REG ADD HKLM\HARDWARE\DESCRIPTION\System\BIOS /v SystemProductName /t REG_SZ /d opensource-%random% /f
+pause
+GOTO:menuLOOP
 
 
 :colorEZ
@@ -580,4 +649,4 @@ for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1)
   set ESC=%%b
   exit /B 0
 )
-pause
+GOTO:EOF

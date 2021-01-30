@@ -10,7 +10,7 @@ The initial motivation is bypassing HWID detection methods used by intrusive sof
 ## How To Run
 1 Open the ```Release```
 2 Run the ```Run_Me.bat``` as administrator (Otherwise, it can't run the Spoofer)
-3 Let the program do the rest
+3 Choose your an option and done
 
 ## Usage Ideas
  Fakes the serial number for HDDs/disk drives
