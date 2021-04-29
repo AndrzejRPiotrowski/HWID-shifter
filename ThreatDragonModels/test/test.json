@@ -1,9 +1,16 @@
 {
   "summary": {
-    "title": "test"
+    "title": "test",
+    "description": "t"
   },
   "detail": {
     "contributors": [],
-    "diagrams": []
+    "diagrams": [
+      {
+        "title": "test",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ]
   }
 }
