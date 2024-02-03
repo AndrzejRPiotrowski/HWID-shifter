@@ -27,7 +27,7 @@ if '%errorlevel%' NEQ '0' (
 
 
 
-title HWID-Shifter by DrunkLeen#8784
+title HWID-Shifter by AndrzejPiotrowski
 Set mycmdWidth=75
 Set mycmdHeight=40
 
