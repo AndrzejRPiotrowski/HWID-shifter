@@ -41,7 +41,7 @@ NTSTATUS completed_storage_query(
 	{
 
 		if(buffer_length < FIELD_OFFSET(STORAGE_DEVICE_DESCRIPTOR, RawDeviceProperties))
-			break;	// They just want the size
+			break;	// They cannot think here stright 
 
 		if(buffer->SerialNumberOffset == 0)
 		{
@@ -89,8 +89,6 @@ NTSTATUS completed_smart(
 	const auto request = (REQUEST_STRUCT*)context;
 	const auto buffer_length = request->OutputBufferLength;
 	const auto buffer = (SENDCMDOUTPARAMS*)request->SystemBuffer;
-	//const auto old_routine = request->OldRoutine;
-	//const auto old_context = request->OldContext;
 	ExFreePool(context);
 
 	if(buffer_length < FIELD_OFFSET(SENDCMDOUTPARAMS, bBuffer)
@@ -109,16 +107,6 @@ NTSTATUS completed_smart(
 		KdPrint(("%s %d : Serial1: %s\n", __FUNCTION__, __LINE__, serial));
 	}
 
-	// I have no fucking idea why not calling the original doesnt cause problems but whatever
-
-	//KdPrint(("%s: Returning STATUS_NOT_SUPPORTED\n", __FUNCTION__));
-
-	// We deny access by returning an ERROR code
-	//irp->IoStatus.Status = STATUS_NOT_SUPPORTED;
-
-	// Call next completion routine (if any)
-	//if ((irp->StackCount > (ULONG)1) && (OldCompletionRoutine != NULL))
-	//	return OldCompletionRoutine(device_object, irp, OldContext);
 
 	return irp->IoStatus.Status;
 }
@@ -129,9 +117,6 @@ void do_completion_hook(PIRP irp, PIO_STACK_LOCATION ioc, PIO_COMPLETION_ROUTINE
 	ioc->Control = 0;
 	ioc->Control |= SL_INVOKE_ON_SUCCESS;
 
-	// Save old completion routine
-	// Yes we rewrite any routine to be on success only
-	// and somehow it doesnt cause disaster
 	const auto old_context = ioc->Context;
 	ioc->Context = ExAllocatePool(NonPagedPool, sizeof(REQUEST_STRUCT));
 	const auto request = (REQUEST_STRUCT*)ioc->Context;
@@ -196,13 +181,6 @@ void apply_hook()
 	ObDereferenceObject(driver_object);
 }
 
-/*extern "C"
-size_t EntryPoint(void* ntoskrn, void* image, void* alloc)
-{
-	KeQuerySystemTime(&g_startup_time);
-	apply_hook();
-	return 0;
-}*/
 
 extern "C"
 NTSTATUS EntryPoint(
